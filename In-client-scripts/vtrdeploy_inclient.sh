@@ -71,7 +71,7 @@ fi
 
 set -e
 
-# echo -e "==========  VPS Initialise Steps Log  =========="
+# echo -e "==========  Node Initialise Steps  =========="
 # echo -e " [x] Update Ubuntu and dependencies"
 # echo -e " [x] Create Swap"
 # echo -e " [x] Add user 'vtorrent'"
@@ -211,7 +211,7 @@ touch ~/deploy_success
 
 echo -e ""
 echo -e ""
-echo -e "---------- VPS Initialised Completed ----------"
+echo -e "---------- Node Initialised Completed ----------"
 echo -e ""
 echo -e " Note: Wallet disabled for running as node only"
 echo -e ""
