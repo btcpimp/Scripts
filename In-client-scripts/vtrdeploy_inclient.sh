@@ -176,6 +176,7 @@ setup_monit() {
 	echo -e ""
 	echo -e ""
 	echo -e "-------- Installing and configuring monit"
+	echo -e ""
 	
 	echo -e "### Installing Monit..."
     apt-get -y install monit
@@ -219,4 +220,4 @@ echo -e ""
 echo -e ""
 echo -e "<b>######## You may restart the server now ########</b>"
 echo -e ""
-echo -e " *** 'vtorrentd' will be automatically start and monitor by monit after restart"
+echo -e "<i> *** 'vtorrentd' will be automatically start and monitor by monit after restart</i>"
