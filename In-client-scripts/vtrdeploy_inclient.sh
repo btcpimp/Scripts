@@ -125,7 +125,7 @@ add_user() {
 download_vtorrent() {
 	echo -e ""
 	echo -e ""
-	echo -e "-------- Downloading latest vTorrentd to /usr/local/bin/vTorrentd.."
+	echo -e "-------- Downloading latest vTorrentd to /usr/local/bin/vTorrentd"
 	echo -e ""
 	
 	bin_file=/usr/local/bin/vTorrentd
@@ -137,13 +137,13 @@ download_vtorrent() {
 
 #	Always overwrite new daemon on init
 	wget -qO- https://raw.githubusercontent.com/vtorrent/official-binary/master/Ubuntu_x64/vTorrentd-Ubuntu-X64-Static.tar.gz | tar xz -C "/usr/local/bin/"
-	echo -e "Latest vTorrentd binary downloaded and successfully saved to /usr/local/bin/"
+	echo -e "latest vTorrentd binary downloaded and successfully saved to /usr/local/bin/"
 }
 
 generate_conf() {
 	echo -e ""
 	echo -e ""
-	echo -e "-------- Generating vtorrent.conf to /home/vtorrent/.vtorrent/vtorrent.conf"
+	echo -e "-------- Generating vtorrent.conf"
 	echo -e ""
 		
 	cd ~vtorrent
@@ -160,6 +160,8 @@ generate_conf() {
 	echo "rpcuser=$randUser" >> $config
 	echo "rpcpassword=$randPass" >> $config
 	
+	echo -e ">> /home/vtorrent/.vtorrent/vtorrent.conf"
+	echo -e ""	
 	echo -e "server=1"
 	echo -e "daemon=1"
 	echo -e "maxconnections=200"
@@ -173,7 +175,7 @@ generate_conf() {
 setup_monit() {
 	echo -e ""
 	echo -e ""
-	echo -e "-------- Installing and configuring monit.."
+	echo -e "-------- Installing and configuring monit"
 	
 	echo -e "### Installing Monit..."
     apt-get -y install monit
