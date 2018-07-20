@@ -116,8 +116,7 @@ add_user() {
 	echo -e "-------- Adding user 'vtorrent'"
 	echo -e ""
 	
-	useradd -m vtorrent || &>/dev/null
-	echo -e "Setting passcode.. vtorrent:$1"
+	useradd -m vtorrent || 2>/dev/null
 	echo "vtorrent:$1" | chpasswd
 	echo -e "Passcode changed for user 'vtorrent'"
 	
@@ -133,6 +132,7 @@ download_vtorrent() {
 	
 	if [ -e "$bin_file" ]; then
 		echo -e "vTorrentd binary already exists at /usr/local/bin, replacing with latest version.."
+		echo -e ""
 	fi
 
 #	Always overwrite new daemon on init
@@ -144,9 +144,10 @@ generate_conf() {
 	echo -e ""
 	echo -e ""
 	echo -e "-------- Generating vtorrent.conf to /home/vtorrent/.vtorrent/vtorrent.conf"
-	
+	echo -e ""
+		
 	cd ~vtorrent
-	sudo -u vtorrent mkdir .vtorrent || &>/dev/null
+	sudo -u vtorrent mkdir .vtorrent || 2>/dev/null
 	config=".vtorrent/vtorrent.conf"
 	sudo -u vtorrent touch $config
 	echo "server=1" > $config
@@ -158,6 +159,15 @@ generate_conf() {
 	randPass=`< /dev/urandom tr -dc A-Za-z0-9 | head -c30`
 	echo "rpcuser=$randUser" >> $config
 	echo "rpcpassword=$randPass" >> $config
+	
+	echo -e "server=1"
+	echo -e "daemon=1"
+	echo -e "maxconnections=200"
+	echo -e "txindex=1"
+	echo -e "disablewallet=1 //disable wallet for running as node only"
+	echo -e "rpcuser=$randUser"
+	echo -e "rpcpassword=$randPass"
+	
 }
 
 setup_monit() {
