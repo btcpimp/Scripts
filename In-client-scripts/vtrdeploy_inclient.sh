@@ -116,7 +116,7 @@ add_user() {
 	echo -e "-------- Adding user 'vtorrent'"
 	echo -e ""
 	
-	useradd -m vtorrent || 2>/dev/null
+	useradd -m vtorrent || &>/dev/null
 	echo "vtorrent:$1" | chpasswd
 	echo -e "Passcode changed for user 'vtorrent'"
 	
@@ -147,7 +147,7 @@ generate_conf() {
 	echo -e ""
 		
 	cd ~vtorrent
-	sudo -u vtorrent mkdir .vtorrent || 2>/dev/null
+	sudo -u vtorrent mkdir .vtorrent || &>/dev/null
 	config=".vtorrent/vtorrent.conf"
 	sudo -u vtorrent touch $config
 	echo "server=1" > $config
@@ -164,7 +164,7 @@ generate_conf() {
 	echo -e "daemon=1"
 	echo -e "maxconnections=200"
 	echo -e "txindex=1"
-	echo -e "disablewallet=1 //disable wallet for running as node only"
+	echo -e "disablewallet=1"
 	echo -e "rpcuser=$randUser"
 	echo -e "rpcpassword=$randPass"
 	
@@ -210,7 +210,10 @@ echo -e ""
 echo -e ""
 echo -e "---------- VPS Initialised Completed ----------"
 echo -e ""
-echo -e " Note: vtorrentd will be automatically start and monitor by Monit after restart."
+echo -e " Note: Wallet disabled for running as node only"
+echo -e "       remove 'disablewallet=1' from vtorrent.conf to re-enable wallet"
+echo -e ""
+echo -e " ** vtorrentd will be automatically start and monitor by monit after restart."
 echo -e ""
 echo -e ""
 echo -e "##### You should restart the server now."
