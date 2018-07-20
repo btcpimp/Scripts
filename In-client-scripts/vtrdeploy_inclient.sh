@@ -100,13 +100,13 @@ create_swap() {
 	echo -e ""
 	
 	if [ -e /swapfile ]; then
-		echo "Swapfile already present, skipping.."
+		echo ">> Swapfile already present, skipping.."
 	else
 		dd if=/dev/zero of=/swapfile bs=1M count=2048 ; mkswap /swapfile ; swapon /swapfile
 		echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 		chown root:root /swapfile
 		chmod 0600 /swapfile
-		echo "Swapfile created completed.."
+		echo ">> Swapfile created completed.."
 	fi
 }
 
@@ -118,7 +118,7 @@ add_user() {
 	
 	useradd -m vtorrent || &>/dev/null
 	echo "vtorrent:$1" | chpasswd
-	echo -e "Passcode changed for user 'vtorrent'"
+	echo -e ">> 'vtorrent' user added with passphrase"
 	
 }
 
@@ -137,7 +137,7 @@ download_vtorrent() {
 
 #	Always overwrite new daemon on init
 	wget -qO- https://raw.githubusercontent.com/vtorrent/official-binary/master/Ubuntu_x64/vTorrentd-Ubuntu-X64-Static.tar.gz | tar xz -C "/usr/local/bin/"
-	echo -e "latest vTorrentd binary downloaded and successfully saved to /usr/local/bin/"
+	echo -e ">> latest vTorrentd binary downloaded and successfully saved to /usr/local/bin/"
 }
 
 generate_conf() {
