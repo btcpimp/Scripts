@@ -75,7 +75,7 @@ set -e
 # echo -e " [x] Update Ubuntu and dependencies"
 # echo -e " [x] Create Swap"
 # echo -e " [x] Add user 'vtorrent'"
-# echo -e " [x] Daemon 'vTorrentd' to /usr/local/bin/vTorrentd"
+# echo -e " [x] Daemon 'vTorrentd' to /usr/local/bin/"
 # echo -e "     [+] Download official compiled binary from Github"
 # echo -e "     [ ] Build with latest source from Github"
 # echo -e " [x] Generate vtorrent.conf to /home/vtorrent/.vtorrent/vtorrent.conf"
