@@ -115,11 +115,13 @@ add_user() {
 	echo -e ""
 	echo -e "-------- Adding user 'vtorrent'"
 	echo -e ""
-	
-	useradd -m vtorrent || &>/dev/null
-	echo "vtorrent:$1" | chpasswd
-	echo -e ">> 'vtorrent' user added with passphrase"
-	
+		
+	if [ id -u vtorrent >/dev/null 2>&1 ]; then
+		echo -e ">> User 'vtorrent' already present, skipping.."
+	else
+		useradd -m -p $1 vtorrent
+		[ $? -eq 0 ] && echo -e ">> User 'vtorrent' has been added to system" || echo ">> Failed to add 'vtorrent' user"
+	fi
 }
 
 download_vtorrent() {
@@ -147,7 +149,17 @@ generate_conf() {
 	echo -e ""
 		
 	cd ~vtorrent
-	sudo -u vtorrent mkdir .vtorrent || &>/dev/null
+	
+	if [ -d "/home/vtorrent/.vtorrent" ]; then
+		echo -e ">> Directory '.vtorrent' already present"
+	else
+		sudo -u vtorrent mkdir .vtorrent || &>/dev/null
+	fi
+	
+	if [ -f "/home/vtorrent/.vtorrent/vtorrent.conf" ]; then
+		echo -e ">> Configuration file 'vtorrent.conf' already present, overwriting.."
+	fi
+
 	config=".vtorrent/vtorrent.conf"
 	sudo -u vtorrent touch $config
 	echo "server=1" > $config
