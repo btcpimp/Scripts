@@ -5,7 +5,7 @@
 # This script was designed to run in-client to deploy VTR node
 #
 
-Version=0.1.2a
+Version=0.1.3a
 
 help_message="\
 Options:
@@ -116,11 +116,12 @@ add_user() {
 	echo -e "-------- Adding user 'vtorrent'"
 	echo -e ""
 		
-	if [ id "vtorrent" >/dev/null 2>&1 ]; then
-		echo -e ">> User 'vtorrent' already present, skipping.."
+	if id "vtorrent" >/dev/null 2>&1; then
+		echo "vtorrent:$1" | chpasswd
+		echo -e ">> User 'vtorrent' already present, passphrase changed"
 	else
 		useradd -m -p $1 vtorrent
-		[ $? -eq 0 ] && echo -e ">> User 'vtorrent' has been added to system" || echo ">> Failed to add 'vtorrent' user"
+		[ $? -eq 0 ] && echo -e ">> User 'vtorrent' has been added to system encrypted" || echo ">> Failed to add 'vtorrent' user"
 	fi
 }
 
@@ -158,6 +159,7 @@ generate_conf() {
 	
 	if [ -f "/home/vtorrent/.vtorrent/vtorrent.conf" ]; then
 		echo -e ">> Configuration file 'vtorrent.conf' already present, overwriting.."
+		echo -e ""
 	fi
 
 	config=".vtorrent/vtorrent.conf"
