@@ -116,7 +116,7 @@ add_user() {
 	echo -e "-------- Adding user 'vtorrent'"
 	echo -e ""
 		
-	if [ id -u vtorrent >/dev/null 2>&1 ]; then
+	if [ egrep "vtorrent" /etc/passwd >/dev/null 2>&1 ]; then
 		echo -e ">> User 'vtorrent' already present, skipping.."
 	else
 		useradd -m -p $1 vtorrent
