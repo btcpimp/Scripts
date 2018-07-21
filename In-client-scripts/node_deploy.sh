@@ -71,7 +71,7 @@ fi
 
 set -e
 
-# echo -e "==========  Node Initialise Steps  =========="
+# echo -e "==========  Node Deployment Steps  =========="
 # echo -e " [x] Update Ubuntu and dependencies"
 # echo -e " [x] Create Swap"
 # echo -e " [x] Add user 'vtorrent'"
@@ -140,7 +140,7 @@ download_vtorrent() {
 
 #	Always overwrite new daemon on init
 	wget -qO- https://raw.githubusercontent.com/vtorrent/official-binary/master/Ubuntu_x64/vTorrentd-Ubuntu-X64-Static.tar.gz | tar xz -C "/usr/local/bin/"
-	echo -e ">> latest vTorrentd binary downloaded and successfully saved to /usr/local/bin/"
+	echo -e ">> Latest vTorrentd binary downloaded and successfully saved to /usr/local/bin/"
 }
 
 generate_conf() {
@@ -229,7 +229,7 @@ touch ~/deploy_success
 
 echo -e ""
 echo -e ""
-echo -e "---------- Node Initialised Completed ----------"
+echo -e "---------- Node Deployment Completed ----------"
 echo -e ""
 echo -e " Note: Wallet disabled for running as node only"
 echo -e ""
