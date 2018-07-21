@@ -51,7 +51,9 @@ download_vtorrent() {
 	echo -e ">> latest vTorrentd binary downloaded and successfully saved to /usr/local/bin/"
 }
 
-echo -e "Script version: $Version"
+echo -e "Running script version: $Version"
+echo -e ""
+echo -e ""
 
 system_update
 download_vtorrent
