@@ -121,7 +121,7 @@ add_user() {
 		echo -e ">> User 'vtorrent' already present, passphrase changed"
 	else
 		useradd -m -p $1 vtorrent
-		[ $? -eq 0 ] && echo -e ">> User 'vtorrent' has been added to system encrypted" || echo ">> Failed to add 'vtorrent' user"
+		[ $? -eq 0 ] && echo -e ">> User 'vtorrent' has been added to system encrypted" || echo -e ">> Failed to add 'vtorrent' user"
 	fi
 }
 
