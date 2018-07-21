@@ -134,7 +134,7 @@ download_vtorrent() {
 	bin_file=/usr/local/bin/vTorrentd
 	
 	if [ -e "$bin_file" ]; then
-		echo -e "vTorrentd binary already exists at /usr/local/bin, replacing with latest version.."
+		echo -e ">> vTorrentd binary already exists at /usr/local/bin, replacing with latest version.."
 		echo -e ""
 	fi
 
