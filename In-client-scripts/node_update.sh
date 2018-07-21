@@ -2,7 +2,7 @@
 #
 # Usage:
 #
-# This script was designed to run in-client to deploy VTR node
+# This script was designed to run in-client to update VTR node
 #
 
 Version=0.0.1a
