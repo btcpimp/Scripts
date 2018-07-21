@@ -42,13 +42,13 @@ download_vtorrent() {
 	bin_file=/usr/local/bin/vTorrentd
 	
 	if [ -e "$bin_file" ]; then
-		echo -e "vTorrentd binary already exists at /usr/local/bin, replacing with latest version.."
+		echo -e ">> vTorrentd binary already exists at /usr/local/bin, replacing with latest version.."
 		echo -e ""
 	fi
 
 #	Always overwrite new daemon on init
 	wget -qO- https://raw.githubusercontent.com/vtorrent/official-binary/master/Ubuntu_x64/vTorrentd-Ubuntu-X64-Static.tar.gz | tar xz -C "/usr/local/bin/"
-	echo -e ">> latest vTorrentd binary downloaded and successfully saved to /usr/local/bin/"
+	echo -e ">> Latest vTorrentd binary downloaded and successfully saved to /usr/local/bin/"
 }
 
 echo -e "Running script version: $Version"
