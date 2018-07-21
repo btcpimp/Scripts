@@ -5,7 +5,7 @@
 # This script was designed to run in-client to deploy VTR node
 #
 
-Version=0.1.1a
+Version=0.1.2a
 
 help_message="\
 Options:
@@ -116,7 +116,7 @@ add_user() {
 	echo -e "-------- Adding user 'vtorrent'"
 	echo -e ""
 		
-	if [ egrep "vtorrent" /etc/passwd >/dev/null 2>&1 ]; then
+	if [ id "vtorrent" >/dev/null 2>&1 ]; then
 		echo -e ">> User 'vtorrent' already present, skipping.."
 	else
 		useradd -m -p $1 vtorrent
@@ -212,8 +212,10 @@ setup_monit() {
 	/etc/init.d/monit restart
 }
 
-echo -e "Script version: $Version"
-	
+echo -e "Running script version: $Version"
+echo -e ""
+echo -e ""
+
 system_update
 create_swap
 add_user "$1"
