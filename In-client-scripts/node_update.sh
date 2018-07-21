@@ -5,7 +5,7 @@
 # This script was designed to run in-client to update VTR node
 #
 
-Version=0.0.1a
+Version=0.1.0a
 
 clear
 
@@ -50,6 +50,8 @@ download_vtorrent() {
 	wget -qO- https://raw.githubusercontent.com/vtorrent/official-binary/master/Ubuntu_x64/vTorrentd-Ubuntu-X64-Static.tar.gz | tar xz -C "/usr/local/bin/"
 	echo -e ">> latest vTorrentd binary downloaded and successfully saved to /usr/local/bin/"
 }
+
+echo -e "Script version: $Version"
 
 system_update
 download_vtorrent

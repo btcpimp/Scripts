@@ -5,7 +5,7 @@
 # This script was designed to run in-client to deploy VTR node
 #
 
-Version=0.0.1a
+Version=0.1.1a
 
 help_message="\
 Options:
@@ -211,6 +211,8 @@ setup_monit() {
 	monit start all
 	/etc/init.d/monit restart
 }
+
+echo -e "Script version: $Version"
 	
 system_update
 create_swap
